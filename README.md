@@ -12,11 +12,16 @@ PROGRAMMING: </br>
 C: functions, pointers
 
 
-## Basics
-A GPU as a whole is referred as a Grid.
+## GPU architecture
+<img src="blocks.png" width="400"/>
 
-A simple c program to print `Hello World!`<br/>
-Since I am writing the code in google collab. So, putting `%%writefile filename` at the top of a cell in Google Colab will write the contents of that cell to a specified filename.
+* A GPU as a whole is a Grid
+* The GPU grid is divided into multiple blocks. Each block has multiple threads. 
+
+
+## `Hello World!` program
+
+First lets write a C program that runs on CPU. Since I am writing the code in google collab. So, putting `%%writefile prog.c` at the top of a cell in Google Colab will write the contents of that cell as `prog.c` in Files.
 ```
 %%writefile hello.c
 
@@ -28,15 +33,15 @@ int main(){
 }
 ```
 
-Compile in google collab using (`!` mark is needed) 
+Compile (`!` mark is needed in Google Collab) 
 ```
 ! gcc -o exe hello.c
 ! ./exe
 ```
 
-Now, lets change this to a CUDA program. CUDA programs have extensions `.cu` </br> 
+Now, lets write the same thing as a CUDA program. CUDA programs have extension `.cu` </br> 
 CPU is referred as Host and GPU is referred as Device. </br>
-When someone says device function, they are referring to the function written to run in GPU.  
+When someone says 'device function', they are referring to the function written to run in GPU.  
 
 ```
 %%writefile prog.cu
@@ -52,7 +57,7 @@ __global__ void print_text(){
 __host__ int main(){
 
    print_text<<<1,1>>>();             // calling the GPU function from the Host
-
+   CudaDeviceSynchronize();
    printf("Hello from CPU! \n");
    return 0;
 }
@@ -65,15 +70,15 @@ Compile in google collab using
 
 Explanation:
 * `__global__`, `__host__` are called qualifiers.
-* `__global__` qualifier denotes that the function after `__global__` is written for the GPU. The calculation inside this function will be done in the GPU
+* `__global__` qualifier denotes that the function is written for the GPU. The calculation inside this function will be done in the GPU
 * Here, we are printing out `Hello from GPU!` from the GPU
 * `print_text()` is a function, just how you make a function in C. Here, it is a device function.
-* `__host__` qualifier denotes that the function after `__host__` will run in the CPU. It contains the main function of the usual C program.
+* `__host__` qualifier denotes that the function will run in the CPU. It contains the main function of the usual C program.
 * In the `main()` function, we call the `print_text` device function using `<<<gridDim, blockDim>>>`
 * `gridDim` = Number of blocks in the GPU, `blockDim` = Number of threads in a block.
-<img src="blocks.png" width="400"/>
-* The GPU grid is divided into multiple blocks. Each block has multiple threads. 
-* In our example, we have sent our device function to 1 block and 1 thread in the block by giving <<<1,1>>>.     
+* In our example, we have sent our device function to 1 block and 1 thread in the block by giving print_text<<<1,1>>>().
+* Now, the calculation has gone to the device/GPU. The GPU prints 'Hello from GPU'. 
+* `CudaDeviceSynchronize` is used in the host to wait for the GPU to complete its task. After GPU task is complete, CPU will progress further, like for example, print the result.   
 
 
 
