@@ -15,10 +15,6 @@ C: functions, pointers
 ## Basics
 A GPU as a whole is referred as a Grid.
 
-![screenshot](screenshot.png)
-
-
-
 A simple c program to print `Hello World!`<br/>
 Since I am writing the code in google collab. So, putting `%%writefile filename` at the top of a cell in Google Colab will write the contents of that cell to a specified filename.
 ```
@@ -73,9 +69,11 @@ Explanation:
 * Here, we are printing out `Hello from GPU!` from the GPU
 * `print_text()` is a function, just how you make a function in C. Here, it is a device function.
 * `__host__` qualifier denotes that the function after `__host__` will run in the CPU. It contains the main function of the usual C program.
-* In the `main()` function, we call the `print_text` device function using `<<<gridDim,blockDim>>>`
-* `gridDim` = Number of blocks in the GPU. `blockDim` = Number of threads in a block.
-*     
+* In the `main()` function, we call the `print_text` device function using `<<<gridDim, blockDim>>>`
+* `gridDim` = Number of blocks in the GPU, `blockDim` = Number of threads in a block.
+<img src="blocks.png" width="400"/>
+* The GPU grid is divided into multiple blocks. Each block has multiple threads. 
+* In our example, we have sent our device function to 1 block and 1 thread in the block by giving <<<1,1>>>.     
 
 
 
