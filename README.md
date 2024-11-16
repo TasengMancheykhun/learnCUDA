@@ -1,4 +1,4 @@
-# These are my notes for CUDA 
+# These are my notes for CUDA 👋
 Basic idea of CUDA is that, using CUDA, we can send a time consuming portion of our code in CPU to the GPU, so that this portion of the calculation will utilize the parallelization capability of the GPU. After the calculation, we will copy back the result from the GPU to our CPU.  
 
 ## Pre requisite: </br>
