@@ -16,8 +16,10 @@ C: functions, pointers
 ## GPU architecture
 <img src="blocks.png" width="400"/>
 
-* A GPU as a whole is a Grid
-* The GPU grid is divided into multiple blocks. Each block has multiple threads. 
+* In a very naive way, we can say a GPU as a whole is a Grid
+* The GPU grid is divided into multiple blocks. Each block has multiple threads. The maximum number of threads a block can have is 1024.
+* There are two types of memory inside a GPU: shared memory and global memory.
+* Most of the time we will use global memory. Shared memory will be used in very special occasions.
 
 
 ## `Hello World!` program
@@ -43,6 +45,7 @@ Compile (`!` mark is needed in Google Collab)
 Now, lets write the same thing as a CUDA program. CUDA programs have extension `.cu` </br> 
 CPU is referred as Host and GPU is referred as Device. </br>
 When someone says 'device function', they are referring to the function written to run in GPU.  
+A cuda program has two parts: Host code part and Device code part.
 
 ```
 %%writefile prog.cu
@@ -71,16 +74,17 @@ Compile in google collab using
 
 Explanation:
 * `__global__`, `__host__` are called qualifiers.
-* `__global__` qualifier denotes that the function is written for the GPU. The calculation inside this function will be done in the GPU
-* Here, we are printing out `Hello from GPU!` from the GPU
-* `print_text()` is a function, just how you make a function in C. Here, it is a device function.
+* `__global__` qualifier denotes that the function is written for the GPU. The calculation inside this function will be done in the GPU. It must always have a void return type.
+* Here, we are printing `Hello from GPU!` from the GPU
+* `print_text()` is a function, just how you make a normal function in C. Here, it is a device function.
 * `__host__` qualifier denotes that the function will run in the CPU. It contains the main function of the usual C program.
-* In the `main()` function, we call the `print_text` device function using `<<<gridDim, blockDim>>>`
+* In the `main()` function, we call the `print_text()` device function using `<<<gridDim, blockDim>>>`
 * `gridDim` = Number of blocks in the GPU, `blockDim` = Number of threads in a block.
-* In our example, we have sent our device function to 1 block and 1 thread in the block by giving print_text<<<1,1>>>().
+* In our example, we have sent our device function to 1 block and 1 thread in the block by calling print_text<<<1,1>>>().
 * Now, the calculation has gone to the device/GPU. The GPU prints 'Hello from GPU'. 
-* `CudaDeviceSynchronize` is used in the host to wait for the GPU to complete its task. After GPU task is complete, CPU will progress further, like for example, print the result.   
+* `CudaDeviceSynchronize` is used in the host to wait for the GPU to complete its task. After GPU's task is complete, CPU will progress further, like for example, in our case print the text 'Hello from CPU'.   
 
+## Adding two array program
 
 
 <!---
