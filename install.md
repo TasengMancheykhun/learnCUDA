@@ -9,4 +9,4 @@
   * check gcc version
     * gcc --version
 
-  
+  * Go to `https://developer.nvidia.com/cuda-downloads` 
