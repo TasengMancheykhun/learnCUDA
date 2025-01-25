@@ -1,6 +1,7 @@
 * Reference video
   * https://www.youtube.com/watch?v=8i3BiWa5AZ4
-  
+  * https://docs.nvidia.com/cuda/cuda-installation-guide-linux  
+
 * Install CUDA in Ubuntu
   * Verify that your GPU us CUDA-capable
     * lspci | grep -i nvidia
@@ -9,4 +10,16 @@
   * check gcc version
     * gcc --version
 
-  * Go to `https://developer.nvidia.com/cuda-downloads` 
+  * Go to https://developer.nvidia.com/cuda-downloads
+    * LINUX > x86_64 > Ubuntu > 24.04 > deb(local)
+
+    * Follow the Installation Instructions under `CUDA Toolkit Installer`
+    * Also NVIDIA Driver installation under 'Driver Installer'
+
+    * In directory `/usr/local/` you must see cuda folders and files created
+
+  * Add PATH in ~/.bashrc
+    * export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
+    * export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} 
+
+  * Check `nvcc --version` 
