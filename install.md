@@ -11,10 +11,10 @@
     * gcc --version
 
   * Go to https://developer.nvidia.com/cuda-downloads
-    * LINUX > x86_64 > Ubuntu > 24.04 > deb(local)
+    * Select--> LINUX > x86_64 > Ubuntu > 24.04 > deb(local)
 
     * Follow the Installation Instructions under `CUDA Toolkit Installer`
-    * Also NVIDIA Driver installation under 'Driver Installer'
+    * Also NVIDIA Driver installation under `Driver Installer`
 
     * In directory `/usr/local/` you must see cuda folders and files created
 
