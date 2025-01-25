@@ -1,4 +1,4 @@
-* Reference video
+* Reference
   * https://www.youtube.com/watch?v=8i3BiWa5AZ4
   * https://docs.nvidia.com/cuda/cuda-installation-guide-linux  
 
