@@ -15,6 +15,8 @@
 
     * Follow the Installation Instructions under `CUDA Toolkit Installer`
     * Also NVIDIA Driver installation under `Driver Installer`
+      * Choose option: Install the legacy kernel module flavor
+      * `sudo apt-get install -y cuda-drivers`
 
     * In directory `/usr/local/` you must see cuda folders and files created
 
