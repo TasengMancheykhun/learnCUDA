@@ -2,6 +2,10 @@
   * https://www.youtube.com/watch?v=8i3BiWa5AZ4
   * https://docs.nvidia.com/cuda/cuda-installation-guide-linux  
 
+* My Machine configuration
+  * Acer Predator Helios 300
+  * NVIDIA GeForce RTX 3060
+
 * Install CUDA in Ubuntu
   * Verify that your GPU is CUDA-capable
     * lspci | grep -i nvidia
@@ -14,11 +18,11 @@
     * Select--> LINUX > x86_64 > Ubuntu > 24.04 > deb(local)
 
     * Follow the Installation Instructions under `CUDA Toolkit Installer`
+    * After installing, in directory `/usr/local/`, you must see cuda folders and files created
+
     * Also NVIDIA Driver installation under `Driver Installer`
       * Choose option: Install the legacy kernel module flavor
       * `sudo apt-get install -y cuda-drivers`
-
-    * In directory `/usr/local/` you must see cuda folders and files created
 
   * Add PATH in ~/.bashrc
     * export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
