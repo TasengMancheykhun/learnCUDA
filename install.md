@@ -24,9 +24,9 @@
       * Choose option: Install the legacy kernel module flavor
       * `sudo apt-get install -y cuda-drivers`
 
-  * Add PATH in ~/.bashrc
-    * export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
-    * export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} 
+  * Add PATH in ~/.bashrc [To be correct, just look inside /usr/local/cuda*]
+    * export PATH=/usr/local/cuda-13.0/bin${PATH:+:${PATH}}
+    * export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} 
 
   * Check `nvcc --version`
 
