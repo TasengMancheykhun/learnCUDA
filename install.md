@@ -34,4 +34,4 @@
 
   * Check `nvidia-smi`
     * In ACER laptop if this gives error, that 'it failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running'
-    * Disable `Secure boot` 
+    * Disable `Secure boot` [This is important Step and is Required]
